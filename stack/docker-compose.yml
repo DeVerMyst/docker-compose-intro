@@ -1,0 +1,48 @@
+version: '3.9'
+
+networks:
+  my_network:
+
+services:
+  apache:
+    image: php:7.4-apache
+    container_name: apache
+    volumes:
+      - ./www:/var/www/html
+    ports:
+      - "${APACHE_PORT}:80"
+    environment:
+      - APACHE_DOCUMENT_ROOT=/var/www/html
+    depends_on:
+      - mysql
+    env_file:
+      - .env
+    networks:
+      - my_network
+
+  mysql:
+    image: mysql:5.7
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
+      MYSQL_DATABASE: "${MYSQL_DATABASE}"
+    ports:
+      - "${MYSQL_PORT}:3306"
+    env_file:
+      - .env
+    networks:
+      - my_network
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    environment:
+      - PMA_HOST=mysql
+      - PMA_USER=root
+      - PMA_PASSWORD=rootpassword
+    ports:
+      - "8081:80"
+    depends_on:
+      - mysql
+    networks:
+      - my_network
