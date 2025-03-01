@@ -6,7 +6,7 @@
 `docker-compose down` : arrêter les conteneurs
 `docker-compose down --rmi all` : arrêter les conteneurs et les supprimer
 
-
+**Pour l'exemple le `.env` est donné mais ne faites pas cela dans vos projets**
 
 ## Transfert de Variables d'Environnement avec Docker Compose
 
