@@ -89,15 +89,21 @@ Chaque exemple utilise un fichier `.env` pour stocker les variables d'environnem
 ├── db/
 │   ├── docker-compose.yml
 │   └── .env
+├── fastapi_env/
+│   ├── docker-compose.yml
+│   ├── Dockerfile
+│   ├── requirements.txt    
+│   ├── monapi.py
+│   └── .env
 ├── stack/
 │   ├── docker-compose.yml
 │   └── .env
-└── fastapi/
+└── streamlit_env/
     ├── docker-compose.yml
     ├── Dockerfile
     ├── requirements.txt    
-    ├── monapi.py
-    └── .env
+    ├── app.py
+    └── .env    
 ```
 
 ## Notes importantes
