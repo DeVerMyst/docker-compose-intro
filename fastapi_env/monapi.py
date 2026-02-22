@@ -1,16 +1,19 @@
 
-from fastapi import FastAPI
 import os
+
+from dotenv import load_dotenv
+from fastapi import FastAPI
+
+# Charge les variables du fichier .env dans l'environnement système
+load_dotenv()
 
 app = FastAPI()
 
-API_URL = os.environ.get("API_URL")
-API_PORT = int(os.environ.get("API_PORT"))
+# Récupération avec os.getenv (plus propre) et typage
+API_CST = os.getenv("API_CST")
+# On définit une valeur par défaut (ex: 8000) pour éviter que le int() ne plante si la variable est absente
+API_PORT = int(os.getenv("API_PORT", 8000))
 
 @app.get("/")
 def read_root():
-    return {"API URL": API_URL, "API PORT": API_PORT}
-
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host=API_URL, port=API_PORT)
+    return {"API_CST": API_CST, "API_PORT": API_PORT}

@@ -92,24 +92,33 @@ Chaque exemple utilise un fichier `.env` pour stocker les variables d'environnem
 ├── fastapi_env/
 │   ├── docker-compose.yml
 │   ├── Dockerfile
-│   ├── requirements.txt    
+│   ├── pyproject.toml    
+│   ├── uv.lock
+│   ├── README.md
 │   ├── monapi.py
+│   ├── .dockerignore
 │   └── .env
 ├── stack/
 │   ├── docker-compose.yml
 │   └── .env
-└── streamlit_env/
-    ├── docker-compose.yml
-    ├── Dockerfile
-    ├── requirements.txt    
-    ├── app.py
-    └── .env    
+├── streamlit_env/
+│   ├── docker-compose.yml
+│   ├── Dockerfile
+│   ├── pyproject.toml    
+│   ├── uv.lock
+│   ├── README.md
+│   ├── app.py
+│   ├── .dockerignore    
+│   └── .env    
+├── README.md
+└── .gitignore
 ```
 
 ## Notes importantes
 
 * N'incluez jamais d'informations sensibles (mots de passe, clés API) directement dans votre code source ou dans les images Docker.
 * Utilisez `.gitignore` pour exclure le fichier `.env` du versionnement.
+* Utilisez `.dockerignore` pour exclure les fichiers lourd de l'image (`.venv` etc...).
 * Adaptez les exemples à vos besoins spécifiques en modifiant les fichiers `.env` et `docker-compose.yml`.
 * Utilisez l'option `--no-cache` lors de la construction pour forcer la mise à jour des images. Exemple : `docker-compose build --no-cache`.
 
